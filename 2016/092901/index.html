@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="PHP项目设置环境变量-Nginx/Apache/php" />
-    <meta property="og:title" content="PHP项目设置环境变量-Nginx/Apache/php" />
-    <meta property="twitter:title" content="PHP项目设置环境变量-Nginx/Apache/php" />
+    <meta name="title" content="网页生成PDF和各种格式图片-wkhtmltopdf" />
+    <meta property="og:title" content="网页生成PDF和各种格式图片-wkhtmltopdf" />
+    <meta property="twitter:title" content="网页生成PDF和各种格式图片-wkhtmltopdf" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>PHP项目设置环境变量-Nginx/Apache/php</title>
+    <title>网页生成PDF和各种格式图片-wkhtmltopdf</title>
 
-    <link rel="canonical" href="/2016/092801/">
+    <link rel="canonical" href="/2016/092901/">
 
     
     
@@ -150,7 +150,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/background/1.jpg')
+        background-image: url('/img/background/2.jpg')
     }
 </style>
 
@@ -162,20 +162,12 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" title="环境变量">
-                            环境变量
-                        </a>
-                        
-                        <a class="tag" href="/tags/php%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" title="PHP环境变量">
-                            PHP环境变量
-                        </a>
-                        
-                        <a class="tag" href="/tags/php" title="PHP">
-                            PHP
+                        <a class="tag" href="/tags/pdf" title="PDF">
+                            PDF
                         </a>
                         
                     </div>
-                    <h1>PHP项目设置环境变量-Nginx/Apache/php</h1>
+                    <h1>网页生成PDF和各种格式图片-wkhtmltopdf</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -184,7 +176,7 @@
                                 Float8
                              
                             on 
-                            Wednesday, September 28, 2016
+                            Thursday, September 29, 2016
                             
                             
                             
@@ -211,68 +203,26 @@
 
 
                 
-                <p>PHP开发中区分测试、本地、生产等环境的方法</p>
-<h2 id="apache">Apache</h2>
-<p>设置<code>RUNTIME_ENVIROMENT</code>环境变量为 <code>DEV</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Apache" data-lang="Apache"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SetEnv</span>  DEV
-</span></span></code></pre></div><p>PHP 获取环境变量</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$env</span> <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">$_SERVER</span>[<span style="color:#f1fa8c">&#39;RUNTIME_ENVIROMENT&#39;</span>];
-</span></span></code></pre></div><p>示例</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Apache" data-lang="Apache"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ServerAdmin</span> admin@admin.com
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">DocumentRoot</span> <span style="color:#f1fa8c">&#34;/var/www/&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ServerName</span> localhost
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SetEnv</span> RUNTIME_ENVIROMENT DEV
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SetEnv</span> MYSQL_USERNAME root
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SetEnv</span> MYSQL_PASSWORD root
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ErrorLog</span> <span style="color:#f1fa8c">&#34;logs/error.log&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">CustomLog</span> <span style="color:#f1fa8c">&#34;logs/access.log&#34;</span> common
-</span></span></code></pre></div><p><code>注：适用于cgi开发、不适用于cli开发</code></p>
-<h2 id="nginx">Nginx</h2>
-<p>设置<code>RUNTIME_ENVIROMENT</code>环境变量为 <code>DEV</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Nginx" data-lang="Nginx"><span style="display:flex;"><span><span style="color:#ff79c6">fastcgi_param</span> <span style="color:#f1fa8c">RUNTIME_ENVIROMENT</span> <span style="color:#f1fa8c">&#39;DEV&#39;</span>
-</span></span></code></pre></div><p>PHP 获取环境变量</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$env</span> <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">$_SERVER</span>[<span style="color:#f1fa8c">&#39;RUNTIME_ENVIROMENT&#39;</span>];
-</span></span></code></pre></div><p>示例</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Nginx" data-lang="Nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span>   <span style="color:#bd93f9">80</span>; 
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">root</span> <span style="color:#f1fa8c">/var/www</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">index</span> <span style="color:#f1fa8c">index.php</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">localhost</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span>
-</span></span><span style="display:flex;"><span>    {   
-</span></span><span style="display:flex;"><span>         <span style="color:#ff79c6">index</span> <span style="color:#f1fa8c">index.php</span>;
-</span></span><span style="display:flex;"><span>    }   
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> ~ <span style="color:#f1fa8c">.*\.(php|php5)?$</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">fastcgi_pass</span> 127.0.0.1:<span style="color:#bd93f9">9000</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">fastcgi_index</span> <span style="color:#f1fa8c">index.php</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">fastcgi_param</span> <span style="color:#f1fa8c">RUNTIME_ENVIROMENT</span> <span style="color:#f1fa8c">&#39;DEV&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">include</span> <span style="color:#f1fa8c">fastcgi_params</span>;
-</span></span><span style="display:flex;"><span>    }   
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><code>注：适用于cgi开发、不适用于cli开发</code></p>
-<h2 id="phpini">php.ini</h2>
-<p>设置<code>RUNTIME_ENVIROMENT</code>环境变量为 <code>DEV</code></p>
-<p>编辑php.ini文件，可放在最后一行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#50fa7b">RUNTIME_ENVIROMENT</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">DEV</span>
-</span></span></code></pre></div><p>PHP 获取环境变量</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$env</span> <span style="color:#ff79c6">=</span> get_cfg_var(<span style="color:#f1fa8c">&#39;RUNTIME_ENVIROMENT&#39;</span>)
-</span></span></code></pre></div><h2 id="linux">linux</h2>
-<p>为登录用户临时设置</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">KEY</span><span style="color:#ff79c6">=</span>VALUE
-</span></span></code></pre></div><p>永久设置环境变量</p>
-<blockquote>
-<p>为登录用户永久设置在<code>~/.bashrc</code>（不同系统各有不同）添加</p>
+                <blockquote>
+<p>系统开发中会遇见生成PDF和图片的需求，在使用一些库生成的时候会存在生成慢或者一些其它问题，在这里有一款很好用的命令行工具<code>wkhtmltopdf</code>支持Windows、mac、linux系统。</p>
 </blockquote>
+<h2 id="它是什么">它是什么</h2>
 <blockquote>
-<p>设置的是整个系统的环境 <code>/etc/environment</code></p>
+<p>wkhtmltopdf和wkhtmltoimage是开源 (LGPLv3) 命令行工具，用于使用 Qt WebKit 渲染引擎将 HTML 渲染为 PDF 和各种图像格式</p>
 </blockquote>
+<h2 id="官网">官网</h2>
 <blockquote>
-<p>设置所有用户的环境 <code>/etc/profile</code></p>
+<p><a href="https://wkhtmltopdf.org/">https://wkhtmltopdf.org/</a></p>
 </blockquote>
-<p>PHP 获取环境变量</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$env</span> <span style="color:#ff79c6">=</span> getenv(<span style="color:#f1fa8c">&#39;RUNTIME_ENVIROMENT&#39;</span>);
-</span></span></code></pre></div><p><code>注：适用于cgi开发、cli开发</code></p>
+<h2 id="文档">文档</h2>
+<blockquote>
+<p><a href="https://wkhtmltopdf.org/usage/wkhtmltopdf.txt">https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</a></p>
+</blockquote>
+<h2 id="例子">例子</h2>
+<p>如生成百度网页的pdf文件</p>
+<blockquote>
+<p>wkhtmltopdf <a href="https://www.baidu.com">https://www.baidu.com</a> baidu.pdf</p>
+</blockquote>
 
 
                 
@@ -281,9 +231,13 @@
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2016/092801/" data-toggle="tooltip" data-placement="top" title="PHP项目设置环境变量-Nginx/Apache/php">&larr;上一篇文章</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2016/092901/" data-toggle="tooltip" data-placement="top" title="网页生成PDF和各种格式图片-wkhtmltopdf">下一篇文章 &rarr;</a>
+                        <a href="/2016/092902/" data-toggle="tooltip" data-placement="top" title="一致性hash">下一篇文章 &rarr;</a>
                     </li>
                     
                 </ul>

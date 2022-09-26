@@ -62,12 +62,12 @@
 body{
     font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;
     line-height:1.7;
-    font-size:17px;
+    font-size:14px;
     color:#404040;
     overflow-x:hidden
 }
 p{
-    margin:30px 0
+    margin:20px 0
 }
 h1,h2,h3,h4,h5,h6{
     font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;
@@ -137,6 +137,9 @@ pre code{
     width:auto;
     white-space:pre;
     word-wrap:normal
+}
+.post-container p{
+    text-indent: 30px;
 }
 .post-container a{
     color:#337ab7
@@ -811,6 +814,11 @@ body{
         font-size:18px
     }
 }
+.post-container ul li {
+    margin-left: -10px;
+}
+
+
 .post-container img{
     display:block;
     max-width:100%;

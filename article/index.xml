@@ -6,7 +6,25 @@
     <description>Recent content in Articles on Float8 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Sep 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/article/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Sep 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/article/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一致性hash</title>
+      <link>https://float8.github.io/2016/092902/</link>
+      <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://float8.github.io/2016/092902/</guid>
+      <description>一致性Hash算法背景 一致性哈希算法在1997年由麻省理工学院的Karger等人在解决分布式Cache中提出的，设计目标是为了解决因特网中的</description>
+    </item>
+    
+    <item>
+      <title>网页生成PDF和各种格式图片-wkhtmltopdf</title>
+      <link>https://float8.github.io/2016/092901/</link>
+      <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://float8.github.io/2016/092901/</guid>
+      <description>系统开发中会遇见生成PDF和图片的需求，在使用一些库生成的时候会存在生成慢或者一些其它问题，在这里有一款很好用的命令行工具wkhtmltop</description>
+    </item>
+    
     <item>
       <title>PHP项目设置环境变量-Nginx/Apache/php</title>
       <link>https://float8.github.io/2016/092801/</link>
