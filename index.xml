@@ -9,100 +9,100 @@
     <lastBuildDate>Sun, 09 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>为什么只有2、8、16进制，没有其它进制</title>
-      <link>https://float8.github.io/2016100901/</link>
+      <link>https://float8.github.io/2016/10/09/01/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016100901/</guid>
+      <guid>https://float8.github.io/2016/10/09/01/</guid>
       <description>编程过程中我们常用的还是10进制数，必竟10进制是人类生活生产中常用的进制，在编程中自然也是最常用的进制。 为什么需要2进制、8进制和16进制</description>
     </item>
     
     <item>
       <title>使用16进制进行状态管理的原因</title>
-      <link>https://float8.github.io/2016100801/</link>
+      <link>https://float8.github.io/2016/10/08/01/</link>
       <pubDate>Sat, 08 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016100801/</guid>
+      <guid>https://float8.github.io/2016/10/08/01/</guid>
       <description>我们在看各种语言的源码时，好多的状态码或者数字用的是16进制，这是为什么呢？ 使用16进制主要是在16进制和2进制转化的时候可以不借助工具的情</description>
     </item>
     
     <item>
       <title>使用位运算进行状态管理</title>
-      <link>https://float8.github.io/2016100701/</link>
+      <link>https://float8.github.io/2016/10/07/01/</link>
       <pubDate>Fri, 07 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016100701/</guid>
+      <guid>https://float8.github.io/2016/10/07/01/</guid>
       <description>我们在代码开发中常常使用数字、字符串作为状态码，管理的状态码大部分具有排他性，不会同时存在多个状态的情况。但是也有一些情况需要多个状态并存的</description>
     </item>
     
     <item>
       <title>一个字节为什么是8位</title>
-      <link>https://float8.github.io/2016100601/</link>
+      <link>https://float8.github.io/2016/10/06/01/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016100601/</guid>
+      <guid>https://float8.github.io/2016/10/06/01/</guid>
       <description>字节一词是Werner Buchholz于1956年6月在IBM Stretch计算机的早期设计阶段发明的，该计算机的寻址为位和可变字段长度（V</description>
     </item>
     
     <item>
       <title>Nginx上传模块</title>
-      <link>https://float8.github.io/2016100501/</link>
+      <link>https://float8.github.io/2016/10/05/01/</link>
       <pubDate>Wed, 05 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016100501/</guid>
+      <guid>https://float8.github.io/2016/10/05/01/</guid>
       <description>官方地址 https://www.nginx.com/resources/wiki/modules/upload/ 说明 Nginx upload module通过nginx服务来接受用户上传的文件，自动解析请求体中存储的所有文件上传到upload_store指定的目录</description>
     </item>
     
     <item>
       <title>Shell中的${}、##和%%使用范例</title>
-      <link>https://float8.github.io/2016/100301/</link>
+      <link>https://float8.github.io/2016/10/03/01/</link>
       <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/100301/</guid>
+      <guid>https://float8.github.io/2016/10/03/01/</guid>
       <description>假设我们定义了一个变量为： file=/dir1/dir2/dir3/my.file.txt 可以用${ }分别替换得到不同的值： ${file#*/} ：删掉第一个 / 及其左边的字符串：dir1/dir2/dir3/my.file</description>
     </item>
     
     <item>
       <title>docker安装php和nginx</title>
-      <link>https://float8.github.io/2016/092903/</link>
+      <link>https://float8.github.io/2016/09/29/03/</link>
       <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/092903/</guid>
+      <guid>https://float8.github.io/2016/09/29/03/</guid>
       <description>如果安装前没有配置文件，需要先挂载一个目录把配置文件拷贝出来 nignx 安装 docker run -p 80:80 -p 7100-7200:7100-7200 --name=nginx \ -v /Users/xxx/docker/lnmp/www:/www \ -v /Users/xxx/docker/lnmp/nginx/log:/var/log/nginx \ -v /Users/xxx/docker/lnmp/nginx/conf.d:/etc/nginx/conf.d \ -v /Users/xxx/docker/lnmp/nginx/nginx.conf:/etc/nginx/nginx.conf \ -v /Users/xxx/docker/lnmp/nginx/fastcgi_params:/etc/nginx/fastcgi_params \ -v /Users/xxx/docker/lnmp/nginx/mime.types:/etc/nginx/mime.types \ -v /Users/xxx/docker/lnmp/nginx/scgi_params:/etc/nginx/scgi_params \ -v /Users/xxx/docker/lnmp/nginx/uwsgi_params:/etc/nginx/uwsgi_params \ -v /Users/xxx/docker/lnmp/nginx/hosts:/etc/hosts \ nginx P</description>
     </item>
     
     <item>
       <title>protobuf</title>
-      <link>https://float8.github.io/2016/092904/</link>
+      <link>https://float8.github.io/2016/09/29/04/</link>
       <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/092904/</guid>
+      <guid>https://float8.github.io/2016/09/29/04/</guid>
       <description>安装 mac 安装 brew install protobuf linux 安装 yum install protobuf</description>
     </item>
     
     <item>
       <title>一致性hash</title>
-      <link>https://float8.github.io/2016/092902/</link>
+      <link>https://float8.github.io/2016/09/29/02/</link>
       <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/092902/</guid>
+      <guid>https://float8.github.io/2016/09/29/02/</guid>
       <description>一致性Hash算法背景 一致性哈希算法在1997年由麻省理工学院的Karger等人在解决分布式Cache中提出的，设计目标是为了解决因特网中的</description>
     </item>
     
     <item>
       <title>网页生成PDF和各种格式图片-wkhtmltopdf</title>
-      <link>https://float8.github.io/2016/092901/</link>
+      <link>https://float8.github.io/2016/09/29/01/</link>
       <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/092901/</guid>
+      <guid>https://float8.github.io/2016/09/29/01/</guid>
       <description>系统开发中会遇见生成PDF和图片的需求，在使用一些库生成的时候会存在生成慢或者一些其它问题，在这里有一款很好用的命令行工具wkhtmltop</description>
     </item>
     
     <item>
       <title>PHP项目设置环境变量-Nginx/Apache/php</title>
-      <link>https://float8.github.io/2016/092801/</link>
+      <link>https://float8.github.io/2016/09/28/01/</link>
       <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/092801/</guid>
+      <guid>https://float8.github.io/2016/09/28/01/</guid>
       <description>PHP开发中区分测试、本地、生产等环境的方法 Apache 设置RUNTIME_ENVIROMENT环境变量为 DEV SetEnv DEV PHP 获取环境变量 $env = $_SERVER[&amp;#39;RUNTIME_ENVIROMENT&amp;#39;]; 示例 ServerAdmin admin@admin.com DocumentRoot &amp;#34;/var/www/&amp;#34; ServerName localhost SetEnv</description>
     </item>
     

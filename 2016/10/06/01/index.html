@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="shell" />
-    <meta property="og:title" content="shell" />
-    <meta property="twitter:title" content="shell" />
+    <meta name="title" content="一个字节为什么是8位" />
+    <meta property="og:title" content="一个字节为什么是8位" />
+    <meta property="twitter:title" content="一个字节为什么是8位" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>shell</title>
+    <title>一个字节为什么是8位</title>
 
-    <link rel="canonical" href="/categories/shell/">
+    <link rel="canonical" href="/2016/10/06/01/">
 
     
     
@@ -147,22 +147,37 @@
 
 
 
-<script>
-    function random(min, max) { 
-        return Math.floor(Math.random() * (max - min)) + min;
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/background/3.jpg')
     }
-    $(function ($) {
-        $(".intro-header").css("background-image", "url('\/img\/background\/"+random(1,9)+".jpg')")
-    })
-</script>
-<header class="intro-header">
+</style>
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Float8 的博客 </h1>
-                    
-                    <span class="subheading">标新立异，键行天下</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>一个字节为什么是8位</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Float8
+                             
+                            on 
+                            Thursday, October 6, 2016
+                            
+                            
+                            
+                            
+                    </span>
                 </div>
             </div>
         </div>
@@ -171,134 +186,138 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="https://float8.github.io/2016/10/03/01/">
-        <h2 class="post-title"> Shell中的${}、##和%%使用范例</h2>
-        
-        <div class="post-content-preview">
-            <div  style="font-size: 15px;color:rgba(red, green, blue, alpha)"> 作者：Float8 时间：2016-10-03 </div>
-	    
-            假设我们定义了一个变量为： file=/dir1/dir2/dir3/my.file.txt 可以用${ }分别替换得到不同的值： ${file#*/} ：删掉第一个 / 及其左边的字符串：dir1/dir2/dir3/my.file
-       
-        </div>
-    </a>
-        <div class="tags post-meta">
-            
-        </div>
-        
-    
+<article>
+    <div class="container">
+        <div class="row">
 
-</div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+
+                
+                <p>字节一词是Werner Buchholz于1956年6月在IBM Stretch计算机的早期设计阶段发明的，该计算机的寻址为位和可变字段长度（VFL）指令，指令中编码了字节大小。这是为了避免意外突变为比特而特意重写的。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E8%8A%82">维基百科</a>   |  <a href="https://baike.baidu.com/item/%E5%AD%97%E8%8A%82/1096318">百度百科</a></p>
+<h3 id="字节英语byte">字节（英语：byte）</h3>
 <hr>
+<p>通常用作电脑及手机及手表等 信息计量单位，不分数据类型。[1][2] 是通信和数据存储的概念。一个字节代表八个比特。从历史的观点上，“字节”表示用于编码单个字符所需要的比特数量。历史上字节长度曾基于硬件为1-48比特不等，最初通常使用6比特或9比特为一字节。今日标准以8比特作为一字节，因8为二进制整数。八个比特在一些规范（例如工业标准、计算机网络、电信技术等）中常被称为八位组。</p>
+<h3 id="八比特的由来">八比特的由来</h3>
+<hr>
+<p>最初的计算机性能和存储容量都比较差,所以普遍采用4位BCD编码。BCD编码表示数字还可以,但表示字母或符号就很不好用,需要用多个编码来表示。后来又演变出6位的BCD编码,以及至今仍在广泛使用的7位ASCII编码。当时IBM为System/360设计了一套8位EBCDIC编码,涵盖了数字、大小写字母和大部分常用符号,同时又兼容广泛用于打孔卡的6位BCDIC编码。System/360很成功,也奠定了字符存储单位采用8位长度的基础,这就是1字节=8位的由来。</p>
 
 
-            
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/10/05/01/" data-toggle="tooltip" data-placement="top" title="Nginx上传模块">&larr;上一篇文章</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/10/07/01/" data-toggle="tooltip" data-placement="top" title="使用位运算进行状态管理">下一篇文章 &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
 
 
+<script src="https://giscus.app/client.js"
+        data-repo="float8/float8.github.io"
+        data-repo-id="R_kgDOIBzbNg"
+        data-category="General"
+        data-category-id=""
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
 
-       	</div>
-        
 
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-	
+            </div>
 
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
 
-    
-    
-    <section>
-        <h5>分类</h5>
-        <ul class="list-inline">
             
-            <li><a target="_blank" href="/categories/nginx">nginx</a></li>
-            
-            <li><a target="_blank" href="/categories/php">php</a></li>
-            
-            <li><a target="_blank" href="/categories/protobuf">protobuf</a></li>
-            
-            <li><a target="_blank" href="/categories/shell">shell</a></li>
-            
-            <li><a target="_blank" href="/categories/%E5%B7%A5%E5%85%B7">工具</a></li>
-            
-            <li><a target="_blank" href="/categories/%E7%AE%97%E6%B3%95">算法</a></li>
-            
-        </ul>
-    </section>
-    
-    
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-    
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">精选标签</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
 
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>特色标签</h5>
-        <div class="tags">
-            
-            
-               
-            
-               
-                <a href="/tags/nginx" title="nginx">nginx</a>
-               
-            
-               
-            
-               
-                <a href="/tags/php" title="php">php</a>
-               
-            
-               
-            
-               
-            
+                
+                
+                <section>
+                    <hr>
+                    <h5>友情链接</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
         </div>
-    </section>
-    
-
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>友情链接</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
-            
-        </ul>
-    </section>
-    
-
-
-    
-
-</div>
-
-	</div>
-</div>
-
+    </div>
+</article>
 
 
 
@@ -358,7 +377,7 @@
             
            
                    <li>
-                       <a href='/categories/shell/index.xml' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

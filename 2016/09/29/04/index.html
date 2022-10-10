@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="shell" />
-    <meta property="og:title" content="shell" />
-    <meta property="twitter:title" content="shell" />
+    <meta name="title" content="protobuf" />
+    <meta property="og:title" content="protobuf" />
+    <meta property="twitter:title" content="protobuf" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>shell</title>
+    <title>protobuf</title>
 
-    <link rel="canonical" href="/categories/shell/">
+    <link rel="canonical" href="/2016/09/29/04/">
 
     
     
@@ -147,22 +147,37 @@
 
 
 
-<script>
-    function random(min, max) { 
-        return Math.floor(Math.random() * (max - min)) + min;
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/background/3.jpg')
     }
-    $(function ($) {
-        $(".intro-header").css("background-image", "url('\/img\/background\/"+random(1,9)+".jpg')")
-    })
-</script>
-<header class="intro-header">
+</style>
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Float8 的博客 </h1>
-                    
-                    <span class="subheading">标新立异，键行天下</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>protobuf</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Float8
+                             
+                            on 
+                            Thursday, September 29, 2016
+                            
+                            
+                            
+                            
+                    </span>
                 </div>
             </div>
         </div>
@@ -171,134 +186,136 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="https://float8.github.io/2016/10/03/01/">
-        <h2 class="post-title"> Shell中的${}、##和%%使用范例</h2>
-        
-        <div class="post-content-preview">
-            <div  style="font-size: 15px;color:rgba(red, green, blue, alpha)"> 作者：Float8 时间：2016-10-03 </div>
-	    
-            假设我们定义了一个变量为： file=/dir1/dir2/dir3/my.file.txt 可以用${ }分别替换得到不同的值： ${file#*/} ：删掉第一个 / 及其左边的字符串：dir1/dir2/dir3/my.file
-       
-        </div>
-    </a>
-        <div class="tags post-meta">
-            
-        </div>
-        
-    
+<article>
+    <div class="container">
+        <div class="row">
 
-</div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+
+                
+                <h2 id="安装">安装</h2>
 <hr>
+<h4 id="mac-安装">mac 安装</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install protobuf
+</span></span></code></pre></div><h4 id="linux-安装">linux 安装</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yum install protobuf
+</span></span></code></pre></div>
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/09/29/02/" data-toggle="tooltip" data-placement="top" title="一致性hash">&larr;上一篇文章</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/09/29/03/" data-toggle="tooltip" data-placement="top" title="docker安装php和nginx">下一篇文章 &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
 
 
-            
+<script src="https://giscus.app/client.js"
+        data-repo="float8/float8.github.io"
+        data-repo-id="R_kgDOIBzbNg"
+        data-category="General"
+        data-category-id=""
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
 
 
+            </div>
 
-       	</div>
-        
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
 
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-	
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">精选标签</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
 
-    
-    
-    <section>
-        <h5>分类</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="/categories/nginx">nginx</a></li>
-            
-            <li><a target="_blank" href="/categories/php">php</a></li>
-            
-            <li><a target="_blank" href="/categories/protobuf">protobuf</a></li>
-            
-            <li><a target="_blank" href="/categories/shell">shell</a></li>
-            
-            <li><a target="_blank" href="/categories/%E5%B7%A5%E5%85%B7">工具</a></li>
-            
-            <li><a target="_blank" href="/categories/%E7%AE%97%E6%B3%95">算法</a></li>
-            
-        </ul>
-    </section>
-    
-    
-
-    
-    
-
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>特色标签</h5>
-        <div class="tags">
-            
-            
-               
-            
-               
-                <a href="/tags/nginx" title="nginx">nginx</a>
-               
-            
-               
-            
-               
-                <a href="/tags/php" title="php">php</a>
-               
-            
-               
-            
-               
-            
+                
+                
+                <section>
+                    <hr>
+                    <h5>友情链接</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
         </div>
-    </section>
-    
-
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>友情链接</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
-            
-        </ul>
-    </section>
-    
-
-
-    
-
-</div>
-
-	</div>
-</div>
-
+    </div>
+</article>
 
 
 
@@ -358,7 +375,7 @@
             
            
                    <li>
-                       <a href='/categories/shell/index.xml' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

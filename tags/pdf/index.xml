@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 29 Sep 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网页生成PDF和各种格式图片-wkhtmltopdf</title>
-      <link>https://float8.github.io/2016/092901/</link>
+      <link>https://float8.github.io/2016/09/29/01/</link>
       <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016/092901/</guid>
+      <guid>https://float8.github.io/2016/09/29/01/</guid>
       <description>系统开发中会遇见生成PDF和图片的需求，在使用一些库生成的时候会存在生成慢或者一些其它问题，在这里有一款很好用的命令行工具wkhtmltop</description>
     </item>
     

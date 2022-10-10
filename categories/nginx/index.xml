@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 05 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx上传模块</title>
-      <link>https://float8.github.io/2016100501/</link>
+      <link>https://float8.github.io/2016/10/05/01/</link>
       <pubDate>Wed, 05 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://float8.github.io/2016100501/</guid>
+      <guid>https://float8.github.io/2016/10/05/01/</guid>
       <description>官方地址 https://www.nginx.com/resources/wiki/modules/upload/ 说明 Nginx upload module通过nginx服务来接受用户上传的文件，自动解析请求体中存储的所有文件上传到upload_store指定的目录</description>
     </item>
     

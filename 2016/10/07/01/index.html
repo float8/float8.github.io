@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Float8 的博客">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://float8.github.io//img/background/">
+    <meta property="twitter:image" content="https://float8.github.io//img/background/" />
+    
+
+    
+    <meta name="title" content="使用位运算进行状态管理" />
+    <meta property="og:title" content="使用位运算进行状态管理" />
+    <meta property="twitter:title" content="使用位运算进行状态管理" />
+    
+
+    
+    <meta name="description" content="FLOAT8，程序员，标新立异，键行天下">
+    <meta property="og:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    <meta property="twitter:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>使用位运算进行状态管理</title>
+
+    <link rel="canonical" href="/2016/10/07/01/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Float8 的博客</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    
+		            
+                        <li><a href="/archive/">归档</a></li>
+                    
+                        <li><a href="/about/">关于</a></li>
+                    
+                    
+                    
+		    <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/background/3.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>使用位运算进行状态管理</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Float8
+                             
+                            on 
+                            Friday, October 7, 2016
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+
+                
+                <p>我们在代码开发中常常使用数字、字符串作为状态码，管理的状态码大部分具有排他性，不会同时存在多个状态的情况。但是也有一些情况需要多个状态并存的情况下。在使用传统方法管理状态码时就比较困难。</p>
+<p>在使用PHP时或者一些其它项目源码时我们尝尝看到使用位运算对状态码进行管理，对原理不了解的情况下就很难理解其中的逻辑。</p>
+<h2 id="示例">示例</h2>
+<hr>
+<p>下面是PHP错误设置代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-PHP" data-lang="PHP"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;?</span>php
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 报告 E_ERROR 、 E_WARNING 、E_PARSE 、 E_NOTICE 错误
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>error_reporting(<span style="color:#ff79c6">E_ERROR</span> <span style="color:#ff79c6">|</span> <span style="color:#ff79c6">E_WARNING</span> <span style="color:#ff79c6">|</span> <span style="color:#ff79c6">E_PARSE</span> <span style="color:#ff79c6">|</span> E_NOTICE);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 除了 E_NOTICE，报告其他所有错误
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>error_reporting(<span style="color:#ff79c6">E_ALL</span> <span style="color:#ff79c6">^</span> E_NOTICE);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 报告所有 PHP 错误
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>error_reporting(<span style="color:#ff79c6">E_ALL</span>);
+</span></span></code></pre></div><p>我们可以看到PHP的错误设置中使用了或、异或运算。在PHP中错误提示具有多钟错误级别，多种错误级别可以同时存在。如果状态具有排他性的情况下要么我们只能查看到阻断新错误，要么我们只能看到警告性错误。这种情况是我们不想要的。所以在PHP错误设置（<code>error_reporting</code>）时可以同时设置多个状态（<code>E_ERROR | E_WARNING | E_PARSE | E_NOTICE</code>）。</p>
+<h2 id="前言">前言</h2>
+<hr>
+<p>就像上面PHP示例一样，在错误展示上需要多种级别的错误都需要展示。实际生活中就像车一样会有多种属性存在，如：SUV、轿车、越野、油车、电车、自动驾驶、宝马、奔驰等。根据这些属性可以组合成不同的品牌车型。</p>
+<p>当只有一种属性的时候可以赋值或者进行判断管理即可，如果多个属性同时存在时那么我们可以使用集合。在删除、查找都需要对集合进行遍历后进行操作，时间复杂度变高。</p>
+<p>有没有什么办法让多个标签也像刚才的单个标签那么简单地使用操作呢?</p>
+<p>回答是肯定的，可以通过本篇文章所说的位运算即可实现。既然讲到位运算那基本离不开二进制，接下来先复习一下二进制的位运算。</p>
+<h2 id="二进制位运算">二进制位运算</h2>
+<p>在状态管理中<code>1、2、3、4</code>即可完成状态管理的运算</p>
+<hr>
+<h4 id="1按位与--">1、按位与( &amp; )</h4>
+<p>当两个对应位的值都为<code>1</code>，则结果为<code>1</code>；否则为<code>0</code>。</p>
+<pre tabindex="0"><code>0001 &amp; 0100      = 0000
+</code></pre><h4 id="2按位或--">2、按位或( | )</h4>
+<p>当两个对应位的值都只要有一位是<code>1</code>，则结果为<code>1</code>。</p>
+<pre tabindex="0"><code>0001 ｜ 0100      = 0101
+</code></pre><h4 id="3按位取反--">3、按位取反( ~ )</h4>
+<p>将一个数按位取反。当是<code>1</code>时，取反则为<code>0</code>；当是<code>0</code>时取反则为<code>1</code>。</p>
+<pre tabindex="0"><code>~ 0001            = 1110
+</code></pre><h4 id="4按位异或--">4、按位异或( ^ )</h4>
+<p>两位一个为<code>0</code>，一个为<code>1</code>，结果为<code>1</code>；否则为<code>0</code>。</p>
+<pre tabindex="0"><code>0001  ^ 0100      = 0100
+</code></pre><h4 id="5右移运算符--">5、右移运算符( &raquo; )</h4>
+<p>向右移动，高位补<code>0</code>,低位溢出。</p>
+<pre tabindex="0"><code>1100  &gt;&gt; 3      = 0001
+</code></pre><h4 id="6左移运算符--">6、左移运算符( &laquo; )</h4>
+<p>向左移动，低位补<code>0</code>。</p>
+<pre tabindex="0"><code>0011  &lt;&lt; 2      = 1100
+</code></pre><h2 id="案例分析和实践">案例分析和实践</h2>
+<hr>
+<p>上面我们举的是PHP错误设置示例，那么接下来我们按照此示例进行分析（其它语言同样适用）。</p>
+<p>参考文档：
+<a href="https://www.php.net/manual/zh/function.error-reporting.php">错误和日志记录预定义常量</a> /
+<a href="https://www.php.net/manual/zh/errorfunc.constants.php">error_reporting 文档</a></p>
+<h4 id="1错误和日志记录预定义常量">1、错误和日志记录预定义常量</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">常量</th>
+<th style="text-align:left">值(int)</th>
+<th style="text-align:right">二进制数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">E_ERROR</td>
+<td style="text-align:left">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">E_WARNING</td>
+<td style="text-align:left">2</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">E_PARSE</td>
+<td style="text-align:left">4</td>
+<td style="text-align:right">100</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">E_NOTICE</td>
+<td style="text-align:left">8</td>
+<td style="text-align:right">1000</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">E_CORE_ERROR</td>
+<td style="text-align:left">16</td>
+<td style="text-align:right">10000</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">E_CORE_WARNING</td>
+<td style="text-align:left">32</td>
+<td style="text-align:right">100000</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">E_COMPILE_ERROR</td>
+<td style="text-align:left">64</td>
+<td style="text-align:right">1000000</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">E_COMPILE_WARNING</td>
+<td style="text-align:left">128</td>
+<td style="text-align:right">10000000</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">E_USER_ERROR</td>
+<td style="text-align:left">256</td>
+<td style="text-align:right">100000000</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">E_USER_WARNING</td>
+<td style="text-align:left">512</td>
+<td style="text-align:right">1000000000</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">E_USER_NOTICE</td>
+<td style="text-align:left">1024</td>
+<td style="text-align:right">10000000000</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">E_STRICT</td>
+<td style="text-align:left">2048</td>
+<td style="text-align:right">100000000000</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">E_RECOVERABLE_ERROR</td>
+<td style="text-align:left">4096</td>
+<td style="text-align:right">1000000000000</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">E_DEPRECATED</td>
+<td style="text-align:left">8192</td>
+<td style="text-align:right">10000000000000</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">E_USER_DEPRECATED</td>
+<td style="text-align:left">16384</td>
+<td style="text-align:right">100000000000000</td>
+</tr>
+<tr>
+<td style="text-align:left">15</td>
+<td style="text-align:left">E_ALL</td>
+<td style="text-align:left">32767</td>
+<td style="text-align:right">111111111111111</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2状态管理">2、状态管理</h4>
+<h5 id="原理分析">原理分析</h5>
+<p><code>幂的表示：a^n，a叫做底数，n叫做指数</code></p>
+<p><strong><code>错误和日志记录预定义常量</code>中我们可以纵向对比每个常量的十进制数字的值和二进制数据的值会发现如下规律：</strong></p>
+<ul>
+<li>二进制数据的规律</li>
+</ul>
+<blockquote>
+<p>从右至左（如果不清晰可以左侧补<code>0</code>至跟<code>E_ALL</code>位数一样多），从上至下，序号定义为<code>n</code>，那么我们会看到序号为0-14的二进制数据的第<code>n</code>位都是<code>1</code>,其它位为<code>0</code>。
+<code>E_ALL</code>是序号0-14所有二进制数据的按位或运算的结果。</p>
+</blockquote>
+<ul>
+<li>十进制数字的规律</li>
+</ul>
+<blockquote>
+<p>从上至下十进制数字，序号0-14的数值为<code>2^n</code>,<code>E_ALL</code>为序号0-14相加之和。十进制数字为什么这样定义，其实我们可以把二进制数据转化为十进制我们会发现他们是相等的只是使用的进制不同。</p>
+</blockquote>
+<p>我们从上面的分析结果可以得到十进制的数字即二进制数字，他们是相等的，十进制是由二进制得来的。那么为什么二进制的数据为什么要如此设计呢？</p>
+<p>举个例子，上述常量最长的长度为<code>15</code>,假如它是有15个插孔的插座，每个插口只有两个状态<code>使用</code>和<code>未使用</code>，那么我们可以很清晰的看到每个插孔的状态是什么。我们可以非常简单的看到某个插口的状态，对某个插口进行插入和移除的操作。</p>
+<h5 id="代码解析">代码解析</h5>
+<p>通过案例及原理分析和实际情况，映射到实际背景中，每个属性、标签他们有个共同特点就是只有<code>有</code>和<code>无</code>两种情况。那么二进制数据同样也只存在两种值<code>0</code>和<code>1</code>，那么我们就可以把每一位可以当做一种标签、属性、一个固定的代表。通过此种映射我们就很容易进行状态的管理的操作了。</p>
+<p><code>事物只要有且只有两种状态就可以二进制数据进行表示</code></p>
+<p>接下来我们使用上面的常量通过代码解析一个完整的状态管理的例子。这里只对多个状态进行操作，不做单状态的设置，单个状态做个赋值操作即可这里不再赘述。这里可以忽略PHP代码只看按位运算即可。</p>
+<p><code>理解下面的代码解析，需要先掌握按位运算。为了直观我们多个二进制的数据操作时，使其长度相等，不足的左侧补0；我们在这里不使用10进制或者16进制数字进行按位计算，为了直观表现下面全部使用二进制进行计算，如果有异议可以对其结果进行验证或者转成10进制运算对比结果。</code></p>
+<p><strong>1.增加状态</strong></p>
+<p>同时设置<code>E_ERROR</code>,<code>E_WARNING</code>两个状态，如下是PHP代码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-PHP" data-lang="PHP"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;?</span>php
+</span></span><span style="display:flex;"><span>error_reporting(<span style="color:#ff79c6">E_ERROR</span> <span style="color:#ff79c6">|</span> <span style="color:#ff79c6">E_WARNING</span>);
+</span></span></code></pre></div><p>上面代码为什么就可以同时设置两个状态呢？我们看解析过程，我们知道常量对应的是一个具体的十进制数值，我们把这两个数字转化为二进制数据后我们就可以直观的看到原理了。</p>
+<p><code>E_ERROR</code>的二进制数据为<code>1</code>;<code>E_WARNING</code>的二进制数据为<code>10</code>;</p>
+<p>我们对<code>E_ERROR</code>,<code>E_WARNING</code>做个按或运算(E_ERROR | E_WARNING);假设我们初始状态为<code>00</code>,那么第<code>0</code>和<code>1</code>位都改成<code>1</code>即可。</p>
+<pre tabindex="0"><code>01 ｜ 10  = 11
+</code></pre><p>通过按位运算后，那么我们看到第<code>0</code>位和第<code>1</code>位上的数字为<code>1</code>了。<code>0</code>位是<code>E_ERROR</code>，<code>1</code>位是<code>E_WARNING</code>,他们的值都是<code>1</code>,证明两个状态都已经存在，有且只有这两个状态。</p>
+<p><strong>2.状态移除</strong></p>
+<p><code>E_ALL</code>包含了所有状态，现在我想把<code>E_WARNING</code>从中移除。那么我们把第<code>1</code>位改为<code>0</code>也就移除了这个标记，先看PHP代码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-PHP" data-lang="PHP"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;?</span>php
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//如下两种两种方法设置相同
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//按异或运算
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>error_reporting(<span style="color:#ff79c6">E_ALL</span> <span style="color:#ff79c6">^</span> <span style="color:#ff79c6">E_WARNING</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//取反后按与计算
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>error_reporting(<span style="color:#ff79c6">~</span><span style="color:#ff79c6">E_WARNING</span> <span style="color:#ff79c6">&amp;</span> <span style="color:#ff79c6">E_ALL</span> );
+</span></span></code></pre></div><p>按异或运算<code>E_ALL ^ E_WARNING</code>翻译成二进制如下：</p>
+<pre tabindex="0"><code>111111111111111  ^ 000000000000010 = 111111111111101
+</code></pre><p>取反后按与计算<code>~E_WARNING &amp; E_ALL</code>翻译成二进制如下（可只能会说直接取反既可以了，在这个案例上的确可以，如果移除多位还是要按照如下步骤进行）：</p>
+<pre tabindex="0"><code>~000000000000010 = 111111111111101
+
+111111111111111  &amp; 111111111111101 = 111111111111101
+</code></pre><p><strong>3.状态判断</strong></p>
+<p>对某个状态进行判断，从上面的逻辑我们可以分析到判断这个状态的存在其位为<code>1</code>即可，否则反之。我们知道按与运算如果没有交集那么结果一定是<code>0</code>,否则不为<code>0</code>;那么我们就可以根据此罗晋进行状态判断了。</p>
+<p>假如我们有‘111111111110001’,我们想判断是否存在<code>E_NOTICE</code>，那么得出的结果为0所以不存在。</p>
+<pre tabindex="0"><code>111111111110001  &amp; 000000000001000 = 0
+</code></pre><h2 id="二进制表示的优劣势">二进制表示的优劣势</h2>
+<h4 id="优势">优势</h4>
+<p>1.作为状态管理简单直接，操作复杂度低。</p>
+<p>2.作为属性标签等的存储能够大量节省内存空间，每个属性、标签等只占一位即可表示有无</p>
+<h4 id="劣势">劣势</h4>
+<p>1.灵活性不够强</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/10/06/01/" data-toggle="tooltip" data-placement="top" title="一个字节为什么是8位">&larr;上一篇文章</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/10/08/01/" data-toggle="tooltip" data-placement="top" title="使用16进制进行状态管理的原因">下一篇文章 &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="float8/float8.github.io"
+        data-repo-id="R_kgDOIBzbNg"
+        data-category="General"
+        data-category-id=""
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">精选标签</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>友情链接</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:whf3@foxmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/13721663656243_.pic.jpg">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/float8">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Float8 的博客 2022
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+
+</html>

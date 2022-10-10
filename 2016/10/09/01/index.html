@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Float8 的博客">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://float8.github.io//img/background/">
+    <meta property="twitter:image" content="https://float8.github.io//img/background/" />
+    
+
+    
+    <meta name="title" content="为什么只有2、8、16进制，没有其它进制" />
+    <meta property="og:title" content="为什么只有2、8、16进制，没有其它进制" />
+    <meta property="twitter:title" content="为什么只有2、8、16进制，没有其它进制" />
+    
+
+    
+    <meta name="description" content="FLOAT8，程序员，标新立异，键行天下">
+    <meta property="og:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    <meta property="twitter:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>为什么只有2、8、16进制，没有其它进制</title>
+
+    <link rel="canonical" href="/2016/10/09/01/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Float8 的博客</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    
+		            
+                        <li><a href="/archive/">归档</a></li>
+                    
+                        <li><a href="/about/">关于</a></li>
+                    
+                    
+                    
+		    <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/background/3.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>为什么只有2、8、16进制，没有其它进制</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Float8
+                             
+                            on 
+                            Sunday, October 9, 2016
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+
+                
+                <p>编程过程中我们常用的还是10进制数，必竟10进制是人类生活生产中常用的进制，在编程中自然也是最常用的进制。</p>
+<h2 id="为什么需要2进制8进制和16进制">为什么需要2进制、8进制和16进制?</h2>
+<hr>
+<h4 id="为什么需要2进制">为什么需要2进制</h4>
+<p>1、计算机是由逻辑电路组成，逻辑电路通常只有两个状态，开关的接通与断开，这两种状态正好可以用“1”和“0”表示；</p>
+<p>2、二进制中只使用0和1两个数字，传输和处理时不易出错，因而可以保障计算机具有很高的可靠性。</p>
+<h4 id="为什么需要8进制和16进制">为什么需要8进制和16进制?</h4>
+<p>由于数据在计算机中的表示，最终以2进制的形式存在，所以有时候在计算机中使用2进制，可以更直观地解决问题。</p>
+<p>但2进制数太长了。比如int类型占用4个字节，32位。比如100，用int类型的二进制数表达将是：</p>
+<pre tabindex="0"><code>0000 0000 0000 0000 0110 0100
+</code></pre><p>面对这么长的数大大增加了进行思考和操作的难度，在编程上造成了非常大的困难。</p>
+<p>用16进制或8进制可以解决这个问题。因为，进制越大，数的表达长度也就越短。不过，为什么偏偏是16或8进制，而不其它的，诸如9或20进制呢？</p>
+<p>2、8、16，分别是2的1次方，3次方，4次方。这一点使得三种进制之间可以非常直接地互相转换。8进制或16进制缩短了2进制数，但保持了2进制数的表达特点。</p>
+<h2 id="转10进制数">转10进制数</h2>
+<hr>
+<h4 id="2进制数转换为10进制数">2进制数转换为10进制数</h4>
+<p>2进制就是逢2进1,用0,1表达。2进制数第0位的权值是2^0，第1位的权值是2^1……，我们可以得到如下公式：</p>
+<p><code>d</code>：代表十进制数； <code>b</code>：代表二进制数1或0； <code>n</code>：代表第几位。</p>
+<blockquote>
+<p>d = b * 2^n + b * 2^(n+1) + b * 2^(n+2) + b * 2^(n+..)+&hellip;</p>
+</blockquote>
+<p><strong>设有一个2进制数<code>0110 0100</code>，转换为10进制为</strong></p>
+<p>先把每一位转为10进制数</p>
+<pre tabindex="0"><code>第0位 0 * 2^0 = 0
+第1位 0 * 2^1 = 0
+第2位 1 * 2^2 = 4
+第3位 0 * 2^3 = 0
+第4位 0 * 2^4 = 0
+第5位 1 * 2^5 = 32
+第6位 1 * 2^6 = 64
+第7位 0 * 2^7 = 0
+</code></pre><p>求每位的相加之和就是10进制数</p>
+<pre tabindex="0"><code>0 * 2^0 + 0 * 2^1 + 1 * 2^2 + 1 * 2^3 + 0 * 2^4 + 1 * 2^5 + 1 * 2^6 + 0 * 2^7 = 100
+</code></pre><p>0乘以多少都是0，所以我们也可以直接跳过值为0的位：</p>
+<pre tabindex="0"><code>1 * 2^2 + 1 * 2^3 + 1 * 2^5 + 1 * 2^6 = 100
+</code></pre><h4 id="8进制数转换为10进制数">8进制数转换为10进制数</h4>
+<p>8进制就是逢8进1。8进制数采用0～7这八数来表达1位数。表达8进制数，前面加0</p>
+<p>8进制数第0位的权值为8^0，第1位权值为8^1，第2位权值为8^2……，我们可以得到如下公式：</p>
+<p><code>d</code>：代表十进制数； <code>b</code>：代表二进制数1或0； <code>n</code>：代表第几位。</p>
+<blockquote>
+<p>d = b * 8^n + b * 8^(n+1) + b * 8^(n+2) + b * 8^(n+..)+&hellip;</p>
+</blockquote>
+<p><strong>设有一个8进制数：<code>1507</code>，转换为10进制为：</strong></p>
+<p>先把每一位转为10进制数</p>
+<pre tabindex="0"><code>第0位 7 * 8^0 = 7
+第1位 0 * 8^1 = 0
+第2位 5 * 8^2 = 320
+第3位 1 * 8^3 = 512
+</code></pre><p>求每位的相加之和就是10进制数:</p>
+<pre tabindex="0"><code>7 * 8^0 + 0 * 8^1 + 5 * 8^2 + 1 * 8^3 = 839
+</code></pre><h4 id="16进制数转换成10进制数">16进制数转换成10进制数</h4>
+<p>2进制，用两个阿拉伯数字：0、1；</p>
+<p>8进制，用八个阿拉伯数字：0、1、2、3、4、5、6、7；</p>
+<p>10进制，用十个阿拉伯数字：0到9；</p>
+<p>16进制，用十六个阿拉伯数字……等等，阿拉伯人或说是印度人，只发明了10个数字啊？</p>
+<p>16进制就是逢16进1，但我们只有0~9这十个数字，所以我们用A，B，C，D，E，F这五个字母来分别表示10，11，12，13，14，15。字母不区分大小写。表达8进制数，前面加0x</p>
+<p>十六进制数的第0位的权值为16^0，第1位的权值为16^1，第2位的权值为16^2……，我们可以得到如下公式：</p>
+<p><code>d</code>：代表十进制数； <code>b</code>：代表二进制数1或0； <code>n</code>：代表第几位。</p>
+<blockquote>
+<p>d = b * 16^n + b * 16^(n+1) + b * 16^(n+2) + b * 16^(n+..)+&hellip;</p>
+</blockquote>
+<p><strong>设有一个8进制数：<code>2AF5</code>，转换为10进制为：</strong></p>
+<p>先把每一位转为10进制数（A表示10，而F表示15)）</p>
+<pre tabindex="0"><code>第0位： 5 * 160 = 5
+第1位： F * 161 = 240
+第2位： A * 162 = 2560
+第3位： 2 * 163 = 8192
+</code></pre><p>求每位的相加之和就是10进制数:</p>
+<pre tabindex="0"><code>5 * 160 + F * 161 + A * 162 + 2 * 163 = 10997
+</code></pre><h2 id="10进制数转换到2816进制数">10进制数转换到2、8、16进制数</h2>
+<hr>
+<h4 id="10进制数转换为2进制数">10进制数转换为2进制数</h4>
+<p>10进制数转换成2进制数，这是一个连续除2的过程：</p>
+<p>把要转换的数除以2得到商和余数，将商继续除以2直到商为0。最后将所有余数倒序排列，得到数就是转换结果。</p>
+<p><strong>设有一个10进制数<code>6</code>，转换为2进制为：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">被除数</th>
+<th style="text-align:center">计算过程</th>
+<th style="text-align:center">商</th>
+<th style="text-align:center">余数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">6 / 2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3 / 2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1 / 2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>那么转换结果为<code>110</code>。</p>
+<h4 id="10进制数转换为8进制数">10进制数转换为8进制数</h4>
+<p>10进制数转换成8进制的方法，和转换为2进制的方法类似，惟一变化：除数由2变成8。</p>
+<p>10进制数转换成8进制数，这是一个连续除8的过程：</p>
+<p>把要转换的数除以8得到商和余数，将商继续除以8直到商为0。最后将所有余数倒序排列，得到数就是转换结果。</p>
+<p><strong>设有一个10进制数<code>120</code>，转换为8进制为：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">被除数</th>
+<th style="text-align:center">计算过程</th>
+<th style="text-align:center">商</th>
+<th style="text-align:center">余数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">120 / 8</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">15 / 8</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1 / 8</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>那么转换结果为<code>170</code>。</p>
+<h4 id="10进制数转换为16进制数">10进制数转换为16进制数</h4>
+<p>10进制数转换成16进制的方法，和转换为2、8进制的方法类似，惟一变化：除数由2变成16。</p>
+<p>10进制数转换成16进制数，这是一个连续除16的过程：</p>
+<p><strong>设有一个10进制数<code>120</code>，转换为16进制为：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">被除数</th>
+<th style="text-align:center">计算过程</th>
+<th style="text-align:center">商</th>
+<th style="text-align:center">余数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">120</td>
+<td style="text-align:center">120 / 16</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">7 / 16</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">7</td>
+</tr>
+</tbody>
+</table>
+<p>那么转换结果为<code>78</code></p>
+<h2 id="216进制数互相转换">2、16进制数互相转换</h2>
+<hr>
+<p>我们使用16进制的最大的单位数(只占一位的数)<code>0xf</code>转换成二进制是<code>1111</code>。那么我们可以看到每位16进制数字是多少：</p>
+<ul>
+<li>第1个<code>1</code>为<code>1</code></li>
+<li>第2个<code>1</code>为<code>2</code></li>
+<li>第3个<code>1</code>为<code>4</code></li>
+<li>第4个<code>1</code>为<code>8</code></li>
+</ul>
+<p>上述数字组合相加不存在数字不一样相加和相等的情况。接下来我们看两种进制的相互转化情况。</p>
+<h4 id="16进制转化为2进制">16进制转化为2进制</h4>
+<p>上面我们看到了最大单位数<code>0xf</code>转化为二进制就是4个<code>1</code>。当16进制数为多位的情况下，我们就可以从右至左把每位16进制的单位数换算成4位的2进制数直至到最后一位16进制数为止。</p>
+<p>那么我们通过二进制的4位数的每个1代表的数16进制数字是不是就能够轻易转化了呢。只要我们通过8、4、2、1做个15以内（含15）的加减法运算即可。</p>
+<p>接下来我们把小于等于<code>0xf</code>的数字做个二进制转化：</p>
+<pre tabindex="0"><code>0xf = 15 = 8+4+2+1 = 1111
+0xe = 14 = 8+4+2+0 = 1110
+0xd = 13 = 8+4+0+1 = 1101
+0xc = 12 = 8+4+0+0 = 1100
+0xb = 11 = 8+0+2+1 = 1011
+0xa = 10 = 8+0+2+0 = 1010
+0x9 =  9 = 8+0+0+1 = 1001
+0x8 =  8 = 8+0+0+0 = 1000
+0x7 =  7 = 0+4+2+1 = 0111
+0x6 =  6 = 0+4+2+0 = 0110
+0x5 =  5 = 0+4+0+1 = 0101
+0x4 =  4 = 0+4+0+0 = 0100
+0x3 =  3 = 0+0+2+1 = 0011
+0x2 =  2 = 0+0+2+0 = 0010
+0x1 =  1 = 0+0+0+1 = 0001
+</code></pre><p>从上面的15（包含15）以内的16进制转2进制是不是非常容易呢</p>
+<h4 id="2进制转化为16进制">2进制转化为16进制</h4>
+<p><code>从右边开始，每四位划分</code></p>
+<pre tabindex="0"><code>1111  = 8+4+2+1 = 15 = 0xf
+1110  = 8+4+2+0 = 14 = 0xe
+1101  = 8+4+0+1 = 13 = 0xd
+1100  = 8+4+0+0 = 12 = 0xc
+1011  = 8+0+2+1 = 11 = 0xb
+1010  = 8+0+2+0 = 10 = 0xa
+1001  = 8+0+0+1 =  9 = 0x9
+1000  = 8+0+0+0 =  8 = 0x8
+0111  = 0+4+2+1 =  7 = 0x7
+0110  = 0+4+2+0 =  6 = 0x6
+0101  = 0+4+0+1 =  5 = 0x5
+0100  = 0+4+0+0 =  4 = 0x4
+0011  = 0+0+2+1 =  3 = 0x3
+0010  = 0+0+2+0 =  2 = 0x2
+0001  = 0+0+0+1 =  1 = 0x1
+</code></pre><p>那么我们看2进制转化为16进制是不是也特别容易。</p>
+<h2 id="28进制数互相转换">2、8进制数互相转换</h2>
+<h4 id="8进制转化为2进制">8进制转化为2进制</h4>
+<p>同<a href="#16%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8C%96%E4%B8%BA2%E8%BF%9B%E5%88%B6">16进制转化为2进制</a></p>
+<h4 id="2进制转化为8进制">2进制转化为8进制</h4>
+<p><code>从右边开始，每三位划分</code></p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/10/08/01/" data-toggle="tooltip" data-placement="top" title="使用16进制进行状态管理的原因">&larr;上一篇文章</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="float8/float8.github.io"
+        data-repo-id="R_kgDOIBzbNg"
+        data-category="General"
+        data-category-id=""
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">精选标签</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>友情链接</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:whf3@foxmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/13721663656243_.pic.jpg">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/float8">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Float8 的博客 2022
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
