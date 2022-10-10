@@ -6,7 +6,16 @@
     <description>Recent content in PHP on Float8 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Sep 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Sep 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker安装php和nginx</title>
+      <link>https://float8.github.io/2016/092903/</link>
+      <pubDate>Thu, 29 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://float8.github.io/2016/092903/</guid>
+      <description>如果安装前没有配置文件，需要先挂载一个目录把配置文件拷贝出来 nignx 安装 docker run -p 80:80 -p 7100-7200:7100-7200 --name=nginx \ -v /Users/xxx/docker/lnmp/www:/www \ -v /Users/xxx/docker/lnmp/nginx/log:/var/log/nginx \ -v /Users/xxx/docker/lnmp/nginx/conf.d:/etc/nginx/conf.d \ -v /Users/xxx/docker/lnmp/nginx/nginx.conf:/etc/nginx/nginx.conf \ -v /Users/xxx/docker/lnmp/nginx/fastcgi_params:/etc/nginx/fastcgi_params \ -v /Users/xxx/docker/lnmp/nginx/mime.types:/etc/nginx/mime.types \ -v /Users/xxx/docker/lnmp/nginx/scgi_params:/etc/nginx/scgi_params \ -v /Users/xxx/docker/lnmp/nginx/uwsgi_params:/etc/nginx/uwsgi_params \ -v /Users/xxx/docker/lnmp/nginx/hosts:/etc/hosts \ nginx P</description>
+    </item>
+    
     <item>
       <title>PHP项目设置环境变量-Nginx/Apache/php</title>
       <link>https://float8.github.io/2016/092801/</link>

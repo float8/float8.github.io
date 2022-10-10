@@ -3,18 +3,60 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://float8.github.io/article/</loc>
-    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://float8.github.io/categories/</loc>
-    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
+    <lastmod>2016-10-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://float8.github.io/</loc>
+    <lastmod>2016-10-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016100801/</loc>
+    <lastmod>2016-10-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016100701/</loc>
+    <lastmod>2016-10-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016100601/</loc>
+    <lastmod>2016-10-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/categories/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/tags/nginx/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/categories/nginx/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016100501/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/tags/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/categories/shell/</loc>
+    <lastmod>2016-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016/100301/</loc>
+    <lastmod>2016-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/tags/docker/</loc>
+    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016/092903/</loc>
     <lastmod>2016-09-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://float8.github.io/tags/pdf/</loc>
     <lastmod>2016-09-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://float8.github.io/tags/</loc>
+    <loc>https://float8.github.io/tags/php/</loc>
+    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/categories/php/</loc>
+    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/categories/protobuf/</loc>
+    <lastmod>2016-09-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://float8.github.io/2016/092904/</loc>
     <lastmod>2016-09-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://float8.github.io/2016/092902/</loc>
@@ -28,12 +70,6 @@
   </url><url>
     <loc>https://float8.github.io/2016/092901/</loc>
     <lastmod>2016-09-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://float8.github.io/tags/php/</loc>
-    <lastmod>2016-09-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://float8.github.io/categories/php/</loc>
-    <lastmod>2016-09-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://float8.github.io/tags/php%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
     <lastmod>2016-09-28T00:00:00+00:00</lastmod>

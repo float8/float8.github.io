@@ -139,7 +139,8 @@ pre code{
     word-wrap:normal
 }
 .post-container p{
-    text-indent: 30px;
+    /* text-indent: 30px; */
+    line-height: 30px;
 }
 .post-container a{
     color:#337ab7
@@ -816,6 +817,15 @@ body{
 }
 .post-container ul li {
     margin-left: -10px;
+    line-height: 30px;
+}
+
+.post-container .highlight {
+    line-height: 30px;
+}
+
+.post-container blockquote p {
+    text-indent: 0px;
 }
 
 

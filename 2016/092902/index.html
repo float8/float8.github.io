@@ -200,6 +200,7 @@
 
                 
                 <h2 id="一致性hash算法背景">一致性Hash算法背景</h2>
+<hr>
 <p>一致性哈希算法在1997年由麻省理工学院的Karger等人在解决分布式Cache中提出的，设计目标是为了解决因特网中的热点(Hot spot)问题，初衷和CARP十分类似。一致性哈希修正了CARP使用的简单哈希算法带来的问题，使得DHT可以在P2P环境中真正得到应用。</p>
 <p>但现在一致性hash算法在分布式系统中也得到了广泛应用，研究过memcached缓存数据库的人都知道，memcached服务器端本身不提供分布式cache的一致性，而是由客户端来提供，具体在计算一致性hash时采用如下步骤：</p>
 <ul>
@@ -217,6 +218,7 @@
 
 </p>
 <h2 id="一致性hash性质">一致性Hash性质</h2>
+<hr>
 <p>考虑到分布式系统每个节点都有可能失效，并且新的节点很可能动态的增加进来，如何保证当系统的节点数目发生变化时仍然能够对外提供良好的服务，这是值得考虑的，尤其实在设计分布式缓存系统时，如果某台服务器失效，对于整个系统来说如果不采用合适的算法来保证一致性，那么缓存于系统中的所有数据都可能会失效（即由于系统节点数目变少，客户端在请求某一对象时需要重新计算其hash值（通常与系统中的节点数目有关），由于hash值已经改变，所以很可能找不到保存该对象的服务器节点），因此一致性hash就显得至关重要，良好的分布式cahce系统中的一致性hash算法应该满足以下几个方面：</p>
 <h4 id="平衡性balance">平衡性(Balance)</h4>
 <p>平衡性是指哈希的结果能够尽可能分布到所有的缓冲中去，这样可以使得所有的缓冲空间都得到利用。很多哈希算法都能够满足这一条件。</p>
@@ -229,6 +231,7 @@
 <h4 id="平滑性smoothness">平滑性(Smoothness)</h4>
 <p>平滑性是指缓存服务器的数目平滑改变和缓存对象的平滑改变是一致的。</p>
 <h2 id="原理">原理</h2>
+<hr>
 <p>一致性哈希算法（Consistent Hashing）最早在论文《Consistent Hashing and Random Trees: Distributed Caching Protocols for Relieving Hot Spots on the World Wide Web》中被提出。简单来说，一致性哈希将整个哈希值空间组织成一个虚拟的圆环，如假设某哈希函数H的值空间为0-2^32-1（即哈希值是一个32位无符号整形），整个哈希空间环如下：</p>
 <p>
   <img src="/img/assets/2016/09/003.png" alt="">
@@ -278,6 +281,10 @@
                         <a href="/2016/092901/" data-toggle="tooltip" data-placement="top" title="网页生成PDF和各种格式图片-wkhtmltopdf">&larr;上一篇文章</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2016/092904/" data-toggle="tooltip" data-placement="top" title="protobuf">下一篇文章 &rarr;</a>
+                    </li>
                     
                 </ul>
                 
@@ -335,6 +342,18 @@
                         
                         
                         
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
                         
                         
                         

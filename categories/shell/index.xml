@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shell on Float8 的博客</title>
+    <link>https://float8.github.io/categories/shell/</link>
+    <description>Recent content in shell on Float8 的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/categories/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell中的${}、##和%%使用范例</title>
+      <link>https://float8.github.io/2016/100301/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://float8.github.io/2016/100301/</guid>
+      <description>假设我们定义了一个变量为： file=/dir1/dir2/dir3/my.file.txt 可以用${ }分别替换得到不同的值： ${file#*/} ：删掉第一个 / 及其左边的字符串：dir1/dir2/dir3/my.file</description>
+    </item>
+    
+  </channel>
+</rss>
