@@ -6,18 +6,27 @@
     <description>Recent content in Articles on Float8 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/article/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Oct 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://float8.github.io/article/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>为什么只有2、8、16进制，没有其它进制</title>
+      <link>https://float8.github.io/2016100901/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://float8.github.io/2016100901/</guid>
+      <description>编程过程中我们常用的还是10进制数，必竟10进制是人类生活生产中常用的进制，在编程中自然也是最常用的进制。 为什么需要2进制、8进制和16进制</description>
+    </item>
+    
     <item>
       <title>使用16进制进行状态管理的原因</title>
       <link>https://float8.github.io/2016100801/</link>
       <pubDate>Sat, 08 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://float8.github.io/2016100801/</guid>
-      <description>不论在PHP</description>
+      <description>我们在看各种语言的源码时，好多的状态码或者数字用的是16进制，这是为什么呢？ 使用16进制主要是在16进制和2进制转化的时候可以不借助工具的情</description>
     </item>
     
     <item>
-      <title>使用位运算进行状态管理的原因</title>
+      <title>使用位运算进行状态管理</title>
       <link>https://float8.github.io/2016100701/</link>
       <pubDate>Fri, 07 Oct 2016 00:00:00 +0000</pubDate>
       
