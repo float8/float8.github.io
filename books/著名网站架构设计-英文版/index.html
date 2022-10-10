@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Float8 的博客">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://float8.github.io//img/background/">
+    <meta property="twitter:image" content="https://float8.github.io//img/background/" />
+    
+
+    
+    <meta name="title" content="著名网站架构设计（英文版）" />
+    <meta property="og:title" content="著名网站架构设计（英文版）" />
+    <meta property="twitter:title" content="著名网站架构设计（英文版）" />
+    
+
+    
+    <meta name="description" content="FLOAT8，程序员，标新立异，键行天下">
+    <meta property="og:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    <meta property="twitter:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>著名网站架构设计（英文版）</title>
+
+    <link rel="canonical" href="/books/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1-%E8%8B%B1%E6%96%87%E7%89%88/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Float8 的博客</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    
+		            
+                        <li><a href="/categories/%e7%94%b5%e5%ad%90%e4%b9%a6/">电子书</a></li>
+                    
+                        <li><a href="/archive/">归档</a></li>
+                    
+                        <li><a href="/about/">关于</a></li>
+                    
+                    
+		    <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/background/2.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6" title="电子书">
+                            电子书
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%B9%A6%E7%B1%8D" title="书籍">
+                            书籍
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E6%9E%B6%E6%9E%84" title="架构">
+                            架构
+                        </a>
+                        
+                        <a class="tag" href="/tags/pdf" title="PDF">
+                            PDF
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E6%A1%88%E4%BE%8B" title="案例">
+                            案例
+                        </a>
+                        
+                    </div>
+                    <h1>著名网站架构设计（英文版）</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Float8
+                             
+                            on 
+                            Monday, October 3, 2022
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+
+                
+                <p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/10%20Golden%20Principles%20For%20Building%20Successful%20Mobile-Web%20Applications.pdf">10 Golden Principles For Building Successful Mobile-Web Applications.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/17%20Techniques%20Used%20to%20Scale%20Turntable.fm%20and%20Labmeeting%20to%20Millions%20of%20Users.pdf">17 Techniques Used to Scale Turntable.fm and Labmeeting to Millions of Users.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/7%20Design%20Patterns%20for%20Almost-infinite%20Scalability.pdf">7 Design Patterns for Almost-infinite Scalability.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Amazon%20Architecture.pdf">Amazon Architecture.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/An%20Epic%20TripAdvisor%20Update%20-%20Why%20Not%20Run%20on%20the%20Cloud%20The%20Grand%20Experiment.pdf">An Epic TripAdvisor Update - Why Not Run on the Cloud The Grand Experiment.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/An%20Unorthodox%20Approach%20to%20Database%20Design%20-%20The%20Coming%20of%20the%20Shard.pdf">An Unorthodox Approach to Database Design - The Coming of the Shard.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Are%20Cloud%20Based%20Memory%20Architectures%20the%20Next%20Big%20Thing.pdf">Are Cloud Based Memory Architectures the Next Big Thing.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Ask%20For%20Forgiveness%20Programming%20-%20Or%20How%20We'll%20Program%201000%20Cores.pdf">Ask For Forgiveness Programming - Or How We&rsquo;ll Program 1000 Cores.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/At%20Some%20Point%20the%20Cost%20of%20Servers%20Outweighs%20the%20Cost%20of%20Programmers.pdf">At Some Point the Cost of Servers Outweighs the Cost of Programmers.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Awesome%20List%20of%20Advanced%20Distributed%20Systems%20Papers.pdf">Awesome List of Advanced Distributed Systems Papers.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Aztec%20Empire%20Strategy%20-%20Use%20Dual%20Pipes%20in%20Your%20Aqueduct%20for%20High%20Availability.pdf">Aztec Empire Strategy - Use Dual Pipes in Your Aqueduct for High Availability.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Big%20Data%20Counting%20-%20How%20to%20count%20a%20billion%20distinct%20objects%20using%20only%201.5KB%20of%20Memory.pdf">Big Data Counting - How to count a billion distinct objects using only 1.5KB of Memory.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Big%20List%20of%2020%20Common%20Bottlenecks.pdf">Big List of 20 Common Bottlenecks.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/C%20is%20for%20Compute%20-%20Google%20Compute%20Engine%20(GCE).pdf">C is for Compute - Google Compute Engine (GCE).pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Changing%20Architectures%20-%20New%20Datacenter%20Networks%20Will%20Set%20Your%20Code%20and%20Data%20Free.pdf">Changing Architectures - New Datacenter Networks Will Set Your Code and Data Free.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Cloud%20Programming%20Directly%20Feeds%20Cost%20Allocation%20Back%20into%20Software%20Design.pdf">Cloud Programming Directly Feeds Cost Allocation Back into Software Design.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Did%20the%20Microsoft%20Stack%20Kill%20MySpace.pdf">Did the Microsoft Stack Kill MySpace.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Facebook%20Timeline%20-%20Brought%20to%20You%20by%20the%20Power%20of%20Denormalization.pdf">Facebook Timeline - Brought to You by the Power of Denormalization.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Facebook%20at%2013%20Million%20Queries%20Per%20Second%20Recommends%20-%20Minimize%20Request%20Variance.pdf">Facebook at 13 Million Queries Per Second Recommends - Minimize Request Variance.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Facebook's%20New%20Real-time%20Messaging%20System%20-%20HBase%20to%20Store%20135+%20Billion%20Messages%20a%20Month.pdf">Facebook&rsquo;s New Real-time Messaging System - HBase to Store 135+ Billion Messages a Month.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Facebook's%20New%20Realtime%20Analytics%20System%20-%20HBase%20to%20Process%2020%20Billion%20Events%20Per%20Day.pdf">Facebook&rsquo;s New Realtime Analytics System - HBase to Process 20 Billion Events Per Day.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Flickr%20Architecture.pdf">Flickr Architecture.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/GPU%20vs%20CPU%20Smackdown%20-%20The%20Rise%20of%20Throughput-Oriented%20Architectures.pdf">GPU vs CPU Smackdown - The Rise of Throughput-Oriented Architectures.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google%20-%20Taming%20the%20Long%20Latency%20Tail%20-%20When%20More%20Machines%20Equals%20Worse%20Results.pdf">Google - Taming the Long Latency Tail - When More Machines Equals Worse Results.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google%20Architecture.pdf">Google Architecture.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google%20Pro%20Tip%20-%20Use%20Back-of-the-envelope-calculations%20to%20Choose%20the%20Best%20Design.pdf">Google Pro Tip - Use Back-of-the-envelope-calculations to Choose the Best Design.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google%20Spanner's%20Most%20Surprising%20Revelation%20-%20NoSQL%20is%20Out%20and%20NewSQL%20is%20In.pdf">Google Spanner&rsquo;s Most Surprising Revelation - NoSQL is Out and NewSQL is In.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google%20on%20Latency%20Tolerant%20Systems%20-%20Making%20a%20Predictable%20Whole%20Out%20of%20Unpredictable%20Parts.pdf">Google on Latency Tolerant Systems - Making a Predictable Whole Out of Unpredictable Parts.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google's%20Colossus%20Makes%20Search%20Real-time%20by%20Dumping%20MapReduce.pdf">Google&rsquo;s Colossus Makes Search Real-time by Dumping MapReduce.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Google+%20is%20Built%20Using%20Tools%20You%20Can%20Use%20Too%20-%20Closure%20Java%20Servlets%20JavaScript%20BigTable%20Colossus%20Quick%20Turnaround.pdf">Google+ is Built Using Tools You Can Use Too - Closure Java Servlets JavaScript BigTable Colossus Quick Turnaround.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/GridGain%20-%20One%20Compute%20Grid,%20Many%20Data%20Grids.pdf">GridGain - One Compute Grid, Many Data Grids.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Heroku%20Emergency%20Strategy%20-%20Incident%20Command%20System%20and%208%20Hour%20Ops%20Rotations%20for%20Fresh%20Minds.pdf">Heroku Emergency Strategy - Incident Command System and 8 Hour Ops Rotations for Fresh Minds.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/How%20I%20Learned%20to%20Stop%20Worrying%20and%20Love%20Using%20a%20Lot%20of%20Disk%20Space%20to%20Scale.pdf">How I Learned to Stop Worrying and Love Using a Lot of Disk Space to Scale.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/How%20can%20we%20spark%20the%20movement%20of%20research%20out%20of%20the%20Ivory%20Tower%20and%20into%20production.pdf">How can we spark the movement of research out of the Ivory Tower and into production.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/How%20to%20Succeed%20at%20Capacity%20Planning%20Without%20Really%20Trying%20-%20An%20Interview%20with%20Flickr's%20John%20Allspaw%20on%20His%20New%20Book.pdf">How to Succeed at Capacity Planning Without Really Trying - An Interview with Flickr&rsquo;s John Allspaw on His New Book.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/How%20will%20memristors%20change%20everything.pdf">How will memristors change everything.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Is%20Node.js%20Becoming%20a%20Part%20of%20the%20Stack%20SimpleGeo%20Says%20Yes.pdf">Is Node.js Becoming a Part of the Stack SimpleGeo Says Yes.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Is%20it%20time%20to%20get%20rid%20of%20the%20Linux%20OS%20model%20in%20the%20cloud.pdf">Is it time to get rid of the Linux OS model in the cloud.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Jim%20Starkey%20is%20Creating%20a%20Brave%20New%20World%20by%20Rethinking%20Databases%20for%20the%20Cloud.pdf">Jim Starkey is Creating a Brave New World by Rethinking Databases for the Cloud.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Latency%20is%20Everywhere%20and%20it%20Costs%20You%20Sales%20-%20How%20to%20Crush%20it.pdf">Latency is Everywhere and it Costs You Sales - How to Crush it.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Machine%20VM%20+%20Cloud%20API%20-%20Rewriting%20the%20Cloud%20from%20Scratch.pdf">Machine VM + Cloud API - Rewriting the Cloud from Scratch.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Misco%20-%20A%20MapReduce%20Framework%20for%20Mobile%20Systems%20-%20Start%20of%20the%20Ambient%20Cloud.pdf">Misco - A MapReduce Framework for Mobile Systems - Start of the Ambient Cloud.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Mollom%20Architecture%20-%20Killing%20Over%20373%20Million%20Spams%20at%20100%20Requests%20Per%20Second.pdf">Mollom Architecture - Killing Over 373 Million Spams at 100 Requests Per Second.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Must%20see%20-%205%20Steps%20to%20Scaling%20MongoDB%20(Or%20Any%20DB)%20in%208%20Minutes.pdf">Must see - 5 Steps to Scaling MongoDB (Or Any DB) in 8 Minutes.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/MySQL%20and%20Memcached%20-%20End%20of%20an%20Era.pdf">MySQL and Memcached - End of an Era.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Netflix%20-%20Continually%20Test%20by%20Failing%20Servers%20with%20Chaos%20Monkey.pdf">Netflix - Continually Test by Failing Servers with Chaos Monkey.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Netflix%20-%20Developing%20Deploying%20and%20Supporting%20Software%20According%20to%20the%20Way%20of%20the%20Cloud.pdf">Netflix - Developing Deploying and Supporting Software According to the Way of the Cloud.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Pinterest%20Architecture%20Update%20-%2018%20Million%20Visitors%2010x%20Growth%2012%20Employees%20410%20TB%20of%20Data.pdf">Pinterest Architecture Update - 18 Million Visitors 10x Growth 12 Employees 410 TB of Data.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Pursue%20robust%20indefinite%20scalability%20with%20the%20Movable%20Feast%20Machine.pdf">Pursue robust indefinite scalability with the Movable Feast Machine.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Russ%E2%80%99%2010%20Ingredient%20Recipe%20for%20Making%201%20Million%20TPS%20on%20$5K%20Hardware.pdf">Russ’ 10 Ingredient Recipe for Making 1 Million TPS on $5K Hardware.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Seven%20Signs%20You%20May%20Need%20a%20NoSQL%20Database.pdf">Seven Signs You May Need a NoSQL Database.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Sharding%20the%20Hibernate%20Way.pdf">Sharding the Hibernate Way.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Startups%20are%20Creating%20a%20New%20System%20of%20the%20World%20for%20IT.pdf">Startups are Creating a New System of the World for IT.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Strategy%20-%20Break%20Up%20the%20Memcache%20Dog%20Pile.pdf">Strategy - Break Up the Memcache Dog Pile.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Strategy%20-%20Diagonal%20Scaling%20-%20Don't%20Forget%20to%20Scale%20Out%20AND%20Up.pdf">Strategy - Diagonal Scaling - Don&rsquo;t Forget to Scale Out AND Up.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Strategy%20-%20Run%20a%20Scalable%20Available%20and%20Cheap%20Static%20Site%20on%20S3%20or%20GitHub.pdf">Strategy - Run a Scalable Available and Cheap Static Site on S3 or GitHub.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Tagged%20Architecture%20-%20Scaling%20to%20100%20Million%20Users%201000%20Servers%20and%205%20Billion%20Page%20Views.pdf">Tagged Architecture - Scaling to 100 Million Users 1000 Servers and 5 Billion Page Views.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Anatomy%20of%20Search%20Technology%20-%20Crawling%20using%20Combinators.pdf">The Anatomy of Search Technology - Crawling using Combinators.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Anatomy%20of%20Search%20Technology%20-%20blekko's%20NoSQL%20database.pdf">The Anatomy of Search Technology - blekko&rsquo;s NoSQL database.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Clever%20Ways%20Chrome%20Hides%20Latency%20by%20Anticipating%20Your%20Every%20Need.pdf">The Clever Ways Chrome Hides Latency by Anticipating Your Every Need.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Etsy%20Saga%20-%20From%20Silos%20to%20Happy%20to%20Billions%20of%20Pageviews%20a%20Month.pdf">The Etsy Saga - From Silos to Happy to Billions of Pageviews a Month.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Instagram%20Architecture%20Facebook%20Bought%20for%20a%20Cool%20Billion%20Dollars.pdf">The Instagram Architecture Facebook Bought for a Cool Billion Dollars.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Mother%20of%20All%20Database%20Normalization%20Debates%20on%20Coding%20Horror.pdf">The Mother of All Database Normalization Debates on Coding Horror.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Performance%20of%20Distributed%20Data-Structures%20Running%20on%20a%20Cache-Coherent%20In-Memory%20Data%20Grid.pdf">The Performance of Distributed Data-Structures Running on a Cache-Coherent In-Memory Data Grid.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20State%20of%20NoSQL%20in%202012.pdf">The State of NoSQL in 2012.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Three%20Ages%20of%20Google%20-%20Batch%20Warehouse%20Instant.pdf">The Three Ages of Google - Batch Warehouse Instant.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/The%20Updated%20Big%20List%20of%20Articles%20on%20the%20Amazon%20Outage.pdf">The Updated Big List of Articles on the Amazon Outage.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Think%20of%20Latency%20as%20a%20Pseudo-permanent%20Network%20Partition.pdf">Think of Latency as a Pseudo-permanent Network Partition.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/This%20stuff%20isn't%20taught,%20you%20learn%20it%20bit%20by%20bit%20as%20you%20solve%20each%20problem.pdf">This stuff isn&rsquo;t taught, you learn it bit by bit as you solve each problem.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/TripAdvisor%20Architecture%20-%2040M%20Visitors%20200M%20Dynamic%20Page%20Views%2030TB%20Data.pdf">TripAdvisor Architecture - 40M Visitors 200M Dynamic Page Views 30TB Data.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Troubles%20with%20Sharding%20-%20What%20can%20we%20learn%20from%20the%20Foursquare%20Incident.pdf">Troubles with Sharding - What can we learn from the Foursquare Incident.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Tumblr%20Architecture%20-%2015%20Billion%20Page%20Views%20a%20Month%20and%20Harder%20to%20Scale%20than%20Twitter.pdf">Tumblr Architecture - 15 Billion Page Views a Month and Harder to Scale than Twitter.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Using%20Gossip%20Protocols%20for%20Failure%20Detection%20Monitoring%20Messaging%20and%20Other%20Good%20Things.pdf">Using Gossip Protocols for Failure Detection Monitoring Messaging and Other Good Things.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Vertical%20Scaling%20Ascendant%20-%20How%20are%20SSDs%20Changing%20%20Architectures.pdf">Vertical Scaling Ascendant - How are SSDs Changing  Architectures.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/VoltDB%20Decapitates%20Six%20SQL%20Urban%20Myths%20and%20Delivers%20Internet%20Scale%20OLTP%20in%20the%20Process.pdf">VoltDB Decapitates Six SQL Urban Myths and Delivers Internet Scale OLTP in the Process.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/What%20Google%20App%20Engine%20Price%20Changes%20Say%20About%20the%20Future%20of%20Web%20Architecture.pdf">What Google App Engine Price Changes Say About the Future of Web Architecture.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/What%20the%20heck%20are%20you%20actually%20using%20NoSQL%20for.pdf">What the heck are you actually using NoSQL for.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Why%20My%20Slime%20Mold%20is%20Better%20than%20Your%20Hadoop%20Cluster.pdf">Why My Slime Mold is Better than Your Hadoop Cluster.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/Why%20are%20Facebook%20Digg%20and%20Twitter%20so%20hard%20to%20scale.pdf">Why are Facebook Digg and Twitter so hard to scale.pdf</a></strong></p>
+<p><strong><a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/%E4%B8%9A%E7%95%8C%E5%88%86%E4%BA%AB/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%8B%B1%E6%96%87%E7%89%88%EF%BC%89/YouTube%20Architecture.pdf">YouTube Architecture.pdf</a></strong></p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/10/09/01/" data-toggle="tooltip" data-placement="top" title="为什么只有2、8、16进制，没有其它进制">&larr;上一篇文章</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/books/jiagou/" data-toggle="tooltip" data-placement="top" title="架构PDF电子书">下一篇文章 &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="float8/float8.github.io"
+        data-repo-id="R_kgDOIBzbNg"
+        data-category="General"
+        data-category-id=""
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">精选标签</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/pdf" title="pdf">
+                            pdf
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E4%B9%A6%E7%B1%8D" title="书籍">
+                            书籍
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E6%9E%B6%E6%9E%84" title="架构">
+                            架构
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E6%A1%88%E4%BE%8B" title="案例">
+                            案例
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6" title="电子书">
+                            电子书
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>友情链接</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:whf3@foxmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/13721663656243_.pic.jpg">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/float8">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Float8 的博客 2022
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+
+</html>

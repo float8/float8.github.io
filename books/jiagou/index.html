@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Float8 的博客">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://float8.github.io//img/background/">
+    <meta property="twitter:image" content="https://float8.github.io//img/background/" />
+    
+
+    
+    <meta name="title" content="架构PDF电子书" />
+    <meta property="og:title" content="架构PDF电子书" />
+    <meta property="twitter:title" content="架构PDF电子书" />
+    
+
+    
+    <meta name="description" content="FLOAT8，程序员，标新立异，键行天下">
+    <meta property="og:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    <meta property="twitter:description" content="FLOAT8，程序员，标新立异，键行天下" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>架构PDF电子书</title>
+
+    <link rel="canonical" href="/books/jiagou/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Float8 的博客</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    
+		            
+                        <li><a href="/categories/%e7%94%b5%e5%ad%90%e4%b9%a6/">电子书</a></li>
+                    
+                        <li><a href="/archive/">归档</a></li>
+                    
+                        <li><a href="/about/">关于</a></li>
+                    
+                    
+		    <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/background/3.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6" title="电子书">
+                            电子书
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%B9%A6%E7%B1%8D" title="书籍">
+                            书籍
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E6%9E%B6%E6%9E%84" title="架构">
+                            架构
+                        </a>
+                        
+                        <a class="tag" href="/tags/pdf" title="PDF">
+                            PDF
+                        </a>
+                        
+                    </div>
+                    <h1>架构PDF电子书</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Float8
+                             
+                            on 
+                            Monday, October 3, 2022
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+
+                
+                <h5 id="阿里巴巴java开发手册books架构阿里巴巴java开发手册pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.pdf">阿里巴巴Java开发手册</a></h5>
+<h5 id="程序员们常用的各类工具集锦books架构程序员们常用的各类工具集锦pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BB%AC%E5%B8%B8%E7%94%A8%E7%9A%84%E5%90%84%E7%B1%BB%E5%B7%A5%E5%85%B7%E9%9B%86%E9%94%A6.pdf">程序员们常用的各类工具集锦</a></h5>
+<h5 id="架构风格与基于网络应用软件的架构设计中文修订版books架构架构风格与基于网络应用软件的架构设计中文修订版pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC%E4%B8%8E%E5%9F%BA%E4%BA%8E%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%AD%E6%96%87%E4%BF%AE%E8%AE%A2%E7%89%88%EF%BC%89.pdf">架构风格与基于网络应用软件的架构设计（中文修订版）</a></h5>
+<h5 id="架构师books架构架构师pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B8%88.pdf">架构师</a></h5>
+<h5 id="架构之美精选版books架构架构之美精选版pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E4%B9%8B%E7%BE%8E%EF%BC%88%E7%B2%BE%E9%80%89%E7%89%88%EF%BC%89.pdf">架构之美（精选版）</a></h5>
+<h5 id="开源技术选型手册books架构开源技术选型手册pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E5%BC%80%E6%BA%90%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E6%89%8B%E5%86%8C.pdf">开源技术选型手册</a></h5>
+<h5 id="领域驱动设计精简版全新修订books架构领域驱动设计精简版全新修订pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E7%B2%BE%E7%AE%80%E7%89%88%EF%BC%88%E5%85%A8%E6%96%B0%E4%BF%AE%E8%AE%A2%EF%BC%89.pdf">领域驱动设计精简版（全新修订）</a></h5>
+<h5 id="区块链生态技术谈books架构区块链生态技术谈pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%94%9F%E6%80%81%E6%8A%80%E6%9C%AF%E8%B0%88.pdf">区块链生态技术谈</a></h5>
+<h5 id="探索无界技术领导力books架构探索无界技术领导力pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E6%8E%A2%E7%B4%A2%E6%97%A0%E7%95%8C%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E5%8A%9B.pdf">探索无界技术领导力</a></h5>
+<h5 id="完美软件开发方法与逻辑books架构完美软件开发方法与逻辑pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E5%AE%8C%E7%BE%8E%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%EF%BC%9A%E6%96%B9%E6%B3%95%E4%B8%8E%E9%80%BB%E8%BE%91.pdf">完美软件开发：方法与逻辑</a></h5>
+<h5 id="微服务监控实践books架构微服务监控实践pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.pdf">微服务监控实践</a></h5>
+<h5 id="小程序开发实践books架构小程序开发实践pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5.pdf">小程序开发实践</a></h5>
+<h5 id="知识图谱打破人工智能的认知天花板books架构知识图谱打破人工智能的认知天花板pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%EF%BC%9A%E6%89%93%E7%A0%B4%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%A4%A9%E8%8A%B1%E6%9D%BF.pdf">知识图谱：打破人工智能的认知天花板</a></h5>
+<h5 id="中国卓越技术团队访谈录2021年第六季books架构中国卓越技术团队访谈录2021年第六季pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E4%B8%AD%E5%9B%BD%E5%8D%93%E8%B6%8A%E6%8A%80%E6%9C%AF%E5%9B%A2%E9%98%9F%E8%AE%BF%E8%B0%88%E5%BD%95%EF%BC%882021%E5%B9%B4%E7%AC%AC%E5%85%AD%E5%AD%A3%EF%BC%89.pdf">中国卓越技术团队访谈录（2021年第六季）</a></h5>
+<h5 id="中台之上业务架构设计books架构中台之上业务架构设计pdf"><a href="/books/%E6%9E%B6%E6%9E%84/%E4%B8%AD%E5%8F%B0%E4%B9%8B%E4%B8%8A%EF%BC%9A%E4%B8%9A%E5%8A%A1%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.pdf">中台之上：业务架构设计</a></h5>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/books/%E8%91%97%E5%90%8D%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1-%E8%8B%B1%E6%96%87%E7%89%88/" data-toggle="tooltip" data-placement="top" title="著名网站架构设计（英文版）">&larr;上一篇文章</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/books/100%E4%B8%AA%E5%A4%A7%E5%8E%82%E6%9E%B6%E6%9E%84%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB/" data-toggle="tooltip" data-placement="top" title="100个大厂架构案例分享">下一篇文章 &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="float8/float8.github.io"
+        data-repo-id="R_kgDOIBzbNg"
+        data-category="General"
+        data-category-id=""
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">精选标签</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nginx" title="nginx">
+                            nginx
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/pdf" title="pdf">
+                            pdf
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E4%B9%A6%E7%B1%8D" title="书籍">
+                            书籍
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E6%9E%B6%E6%9E%84" title="架构">
+                            架构
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E6%A1%88%E4%BE%8B" title="案例">
+                            案例
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6" title="电子书">
+                            电子书
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>友情链接</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://colobu.com/">鸟窝的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:whf3@foxmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/13721663656243_.pic.jpg">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/float8">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Float8 的博客" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Float8 的博客 2022
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
