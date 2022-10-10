@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="docker安装php和nginx" />
-    <meta property="og:title" content="docker安装php和nginx" />
-    <meta property="twitter:title" content="docker安装php和nginx" />
+    <meta name="title" content="NGINX和PHP分离部署的配置" />
+    <meta property="og:title" content="NGINX和PHP分离部署的配置" />
+    <meta property="twitter:title" content="NGINX和PHP分离部署的配置" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="FLOAT8 , FLOAT8的网络日志, FLOAT8的博客, FLOAT8 Blog, 博客, 个人网站, 互联网, Web, Golang, PHP">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>docker安装php和nginx</title>
+    <title>NGINX和PHP分离部署的配置</title>
 
-    <link rel="canonical" href="/2016/09/29/03/">
+    <link rel="canonical" href="/2016/09/20/00/">
 
     
     
@@ -162,10 +162,6 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/docker" title="docker">
-                            docker
-                        </a>
-                        
                         <a class="tag" href="/tags/php" title="php">
                             php
                         </a>
@@ -175,7 +171,7 @@
                         </a>
                         
                     </div>
-                    <h1>docker安装php和nginx</h1>
+                    <h1>NGINX和PHP分离部署的配置</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -211,48 +207,47 @@
 
 
                 
-                <p>如果安装前没有配置文件，需要先挂载一个目录把配置文件拷贝出来</p>
-<h2 id="nignx-安装">nignx 安装</h2>
-<hr>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run -p 80:80 -p 7100-7200:7100-7200 --name<span style="color:#ff79c6">=</span>nginx <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/www:/www <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/log:/var/log/nginx <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/conf.d:/etc/nginx/conf.d <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/nginx.conf:/etc/nginx/nginx.conf <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/fastcgi_params:/etc/nginx/fastcgi_params <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/mime.types:/etc/nginx/mime.types <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/scgi_params:/etc/nginx/scgi_params <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/uwsgi_params:/etc/nginx/uwsgi_params <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/nginx/hosts:/etc/hosts <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>nginx
-</span></span></code></pre></div><h2 id="php安装">PHP安装</h2>
-<hr>
-<h4 id="php7安装">PHP7安装</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run -p 9000:9000 --name<span style="color:#ff79c6">=</span>php7.4.30-fpm <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/www:/www <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php7.4/php.ini:/usr/local/etc/php/php.ini <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php7.4/php-fpm.conf:/usr/local/etc/php-fpm.conf <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php7.4/php-fpm.d:/usr/local/etc/php-fpm.d <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php7.4/extensions:/usr/local/lib/php/extensions/no-debug-non-zts-20190902 <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>php:7.4.30-fpm
-</span></span></code></pre></div><h4 id="php8安装">PHP8安装</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run -p 9001:9001 --name<span style="color:#ff79c6">=</span>php8.1.10-fpm <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/www:/www <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php8.1/conf.d:/usr/local/etc/php/conf.d <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php8.1/php.ini:/usr/local/etc/php/php.ini <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php8.1/php-fpm.conf:/usr/local/etc/php-fpm.conf <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php8.1/php-fpm.d:/usr/local/etc/php-fpm.d <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>-v /Users/xxx/docker/lnmp/php8.1/extensions:/usr/local/lib/php/extensions/no-debug-non-zts-20210902 <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>php:8.1.10-fpm
-</span></span></code></pre></div><h4 id="php源码内的扩展安装">PHP源码内的扩展安装</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/local/bin/docker-php-ext-install pdo_mysql mysqli zip gd bcmath
-</span></span></code></pre></div><h4 id="扩展安装示例">扩展安装示例</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pecl install redis
-</span></span><span style="display:flex;"><span>pecl install swoole
-</span></span></code></pre></div><h2 id="nginx和php分离部署的配置">NGINX和PHP分离部署的配置</h2>
-<hr>
-<p>参见<a href="/2016/09/27/01/">NGINX和PHP分离部署的配置</a></p>
-
+                <p>静态文件目录、PHP目录可不在一样的根目录下怎么进行分别配置？</p>
+<h4 id="静态文件">静态文件</h4>
+<p>nginx为站点提供静态文件服务</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root /www/www.demo.com;
+</span></span></code></pre></div><h4 id="php文件">PHP文件</h4>
+<p>php使用php-fpm进行执行的情况下需要配置<code>SCRIPT_FILENAME</code>让php-fpm知道需要执行的脚本位置。</p>
+<p><code>$fastcgi_script_name</code>获取的是脚本相对目录，对于php-fpm来说并不知道php项目地址是什么，所以需要加上php服务器的项目目录地址，php-fpm才能够找的到。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> fastcgi_param  SCRIPT_FILENAME  /项目绝对目录<span style="color:#8be9fd;font-style:italic">$fastcgi_script_name</span>;
+</span></span></code></pre></div><h4 id="fastcgi的配置">fastcgi的配置</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fastcgi_pass  php docker 的IP地址:9000;
+</span></span></code></pre></div><h4 id="完整示例">完整示例</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">www.demo.com</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">access_log</span> <span style="color:#f1fa8c">/var/log/nginx/www.demo.com_nginx.log</span> <span style="color:#f1fa8c">combined</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">index</span> <span style="color:#f1fa8c">index.html</span> <span style="color:#f1fa8c">index.htm</span> <span style="color:#f1fa8c">index.php</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">#静态文件目录
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">root</span> <span style="color:#f1fa8c">/www/www.demo.com</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#f1fa8c">(!-e</span> <span style="color:#8be9fd;font-style:italic">$request_filename</span><span style="color:#f1fa8c">)</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">rewrite</span> <span style="color:#f1fa8c">(.*)</span> <span style="color:#f1fa8c">/index.php</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> ~ <span style="color:#f1fa8c">\.php$</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">fastcgi_pass</span>   172.17.0.4:<span style="color:#bd93f9">9000</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">fastcgi_index</span>  <span style="color:#f1fa8c">index.php</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">#设置PHP脚本访问目录
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">fastcgi_param</span>  <span style="color:#f1fa8c">SCRIPT_FILENAME</span>  <span style="color:#f1fa8c">/home/www/www.demo.com</span><span style="color:#8be9fd;font-style:italic">$fastcgi_script_name</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">include</span>        <span style="color:#f1fa8c">fastcgi_params</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> ~ <span style="color:#f1fa8c">.*\.(gif|jpg|jpeg|png|bmp|swf|flv|ico)$</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">expires</span> <span style="color:#f1fa8c">30d</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">access_log</span> off;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> ~ <span style="color:#f1fa8c">.*\.(js|css)?$</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">expires</span> <span style="color:#f1fa8c">7d</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">access_log</span> off;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
                 
 
@@ -261,12 +256,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/09/20/00/" data-toggle="tooltip" data-placement="top" title="NGINX和PHP分离部署的配置">&larr;上一篇文章</a>
+                        <a href="/2016/09/29/04/" data-toggle="tooltip" data-placement="top" title="protobuf">&larr;上一篇文章</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2016/10/03/01/" data-toggle="tooltip" data-placement="top" title="Shell中的${}、##和%%使用范例">下一篇文章 &rarr;</a>
+                        <a href="/2016/09/29/03/" data-toggle="tooltip" data-placement="top" title="docker安装php和nginx">下一篇文章 &rarr;</a>
                     </li>
                     
                 </ul>
